@@ -36,8 +36,8 @@ CONTROL_PORT      =  #9051
 MAX_REQ_PER_IP    =  #80
 
 # DUPLICATE SAVE SETTINGS
-#SPECIAL_URLS = ['http://music.163.com/weapi/v1/resource/comments/R_SO_4_185807/?csrf_token=']
-#SPECIAL_URLS_RES = [ur'http:\/\/music\.163\.com\/weapi\/v1\/resource\/comments\/R_SO_4_\d+\/\?csrf_token=']
+#SPECIAL_URLS     = # ['http://music.163.com/weapi/v1/resource/comments/R_SO_4_185807/?csrf_token=']
+#SPECIAL_URLS_RES = # [ur'http:\/\/music\.163\.com\/weapi\/v1\/resource\/comments\/R_SO_4_\d+\/\?csrf_token=']
 
 # DUPLICATE FILTER SETTINGS
 DUPLICATE_REQUEST_ENABLED = True
