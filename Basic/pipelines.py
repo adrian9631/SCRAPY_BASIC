@@ -113,9 +113,9 @@ class MongodbPipeline(object):
 
         #FOR EXAMPLE:
 
-        #if item['news_type'] == 'cul':
+        #if item['something'] == 'something':
         #
-        #    collection = db.wh
+        #    collection = db.something
         #
         #    item['submission_date'] = datetime.datetime.utcnow()
         #
