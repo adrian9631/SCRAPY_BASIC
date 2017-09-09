@@ -13,6 +13,7 @@ import redis
 from hashlib import md5
 from scrapy.conf import settings
 from scrapy.utils.project import get_project_settings
+
 class SimpleHash(object):
     def __init__(self, cap, seed):
         self.cap = cap
