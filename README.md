@@ -1,57 +1,56 @@
 # SCRAPY_BASIC（SCRAPY基础设置）
 
-Including the basic settings about the databse storage，the duplicate filter，the tor proxy and so forth
   
-#### 示例
+
 ## Overview （项目概述）
 本项目建立在scrapy框架基础上，编写了多个插件分别实现了**反爬**，**去重**，**存储**等功能。反爬处理包括随机ua的生成和基于tor代理的动态IP实现（中国内陆需要翻墙），URL及数据去重基于redis数据库并利用布隆过滤器（Bloom Filter）进行处理，使用mongodb数据库做数据存储。  
 
 --------
 ## Requirements （项目环境）  
-#### 安装配置shadowsocks翻墙
+#### 1.安装配置shadowsocks翻墙
 请参考https://github.com/shadowsocks/shadowsocks-windows （在本地1080端口运行ss服务)  
 
-#### 导入ua表至mysql本地数据库  
+#### 2.导入ua表至mysql本地数据库  
     $ mysql -u username -p database < ua.sql  
     
-#### 安装配置Tor代理，Stem（调度库）和 polipo（HTTP代理）  
-1.利用apt进行安装:  
+#### 3.安装配置Tor代理，Stem（调度库）和 polipo（HTTP代理）  
+利用apt进行安装:  
 `$ apt-get install tor python-stem polipo`  
 
-2.用tor命令hash加密密码:  
+用tor命令hash加密密码:  
 `$ tor --hash-password secretPassword`   
 
-3.将加密密码，端口号，代理地址，认证信息填写至`/etc/tor/torrc`:  
+将加密密码，端口号，代理地址，认证信息填写至`/etc/tor/torrc`:  
     
     ControlPort 9051
     HashedControlPassword  16:4BACA186EEB773696065AF69D10BFEA474970DCF5B8A860F33D052B686  
     Socks5Proxy 127.0.0.1:1080  
     CookieAuthentication 1  
 
-4.将代理地址填写至`/etc/polipo/config`:  
+将代理地址填写至`/etc/polipo/config`:  
     
     socksParentProxy = localhost:9050  
 
-5.重新运行tor，polipo代理:  
+重新运行tor，polipo代理:  
 
     $ service tor restart
     $ service polipo restart
     
-#### 启动mysql，redis，mongodb数据库服务  
+#### 4.启动mysql，redis，mongodb数据库服务  
 数据库的安装配置请详情参考官网  
-1.使用pip安装python的数据库依赖包：  
+使用pip安装python的数据库依赖包：  
     
     $ pip install MySQL-python redis pymongo  
     
-2.在`redis/src`目录下：  
+在`redis/src`目录下：  
 
     $ .redis-server ../redis.conf
 
-3.启动mongodb数据库：  
+启动mongodb数据库：  
     
     $ mongod --auth
 
-4.启动mysql数据库：  
+启动mysql数据库：  
     
     $ service mysql start
 
