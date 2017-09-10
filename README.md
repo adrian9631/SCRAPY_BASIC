@@ -1,6 +1,7 @@
-# SCRAPY_BASIC（SCRAPY基础设置）
-
-  
+# SCRAPY_BASIC（SCRAPY基础设置）  
+Including the basic settings about the databse storage，the duplicate filter，the tor proxy and so forth  
+  
+  
 
 ## Overview （项目概述）
 本项目建立在scrapy框架基础上，编写了多个插件分别实现了**反爬**，**去重**，**存储**等功能。反爬处理包括随机ua的生成和基于tor代理的动态IP实现（中国内陆需要翻墙），URL及数据去重基于redis数据库并利用布隆过滤器（Bloom Filter）进行处理，使用mongodb数据库做数据存储。  
@@ -15,10 +16,12 @@
     
 #### 3.安装配置Tor代理，Stem（调度库）和 polipo（HTTP代理）  
 利用apt进行安装:  
-`$ apt-get install tor python-stem polipo`  
+
+    $ apt-get install tor python-stem polipo  
 
 用tor命令hash加密密码:  
-`$ tor --hash-password secretPassword`   
+    
+    $ tor --hash-password secretPassword   
 
 将加密密码，端口号，代理地址，认证信息填写至`/etc/tor/torrc`:  
     
@@ -96,7 +99,6 @@
     
 #### 6.Enable or disable downloader middlewares
 中间插件执行顺序由上往下分别是**URL去重**，**随机UA**，**动态IP**（加“#”注释即可停用插件）  
-执行顺序详细见：http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 
     DOWNLOADER_MIDDLEWARES = {  
     #'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':400,  
@@ -108,7 +110,6 @@
 
 #### 7.Configure item pipelines
 下载插件执行顺序由上往下分别是**ITEM去重**，**ITEM存储**（加“#”注释即可停用插件）  
-执行顺序详细见：http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 
     ITEM_PIPELINES = {  
     'Basic.pipelines.RedisDuplicatePipeline': 100,  
@@ -119,14 +120,18 @@
 ------------
 ## Usage （运行测试）
 1.修改项目信息Target :  
-`$ vi scrapy.cfg (vi settings.py)`  
+     
+    $ vi scrapy.cfg (vi settings.py)  
 在vi编辑器工作栏下  
-`:%s/Basic/Target/g`  
+    
+    :%s/Basic/Target/g  
 
 2.运行，测试IP ：  
-`$ scrapy crawl IPtester`  
-  
+
+    $ scrapy crawl IPtester  
+
 3.截图：  
+  
 ![image](https://github.com/adrianyoung/SCRAPY_BASIC/blob/master/example.png?raw=true)
     
 
