@@ -1,4 +1,5 @@
-# SCRAPY_BASIC（SCRAPY基础设置）  
+# SCRAPY_BASIC（SCRAPY基础设置)   
+
 Including the basic settings about the databse storage，the duplicate filter，the tor proxy and so forth  
   
   
@@ -6,7 +7,7 @@ Including the basic settings about the databse storage，the duplicate filter，
 ## Overview （项目概述）
 本项目建立在scrapy框架基础上，编写了多个插件分别实现了**反爬**，**去重**，**存储**等功能。反爬处理包括随机ua的生成和基于tor代理的动态IP实现（中国内陆需要翻墙），URL及数据去重基于redis数据库并利用布隆过滤器（Bloom Filter）进行处理，使用mongodb数据库做数据存储。  
 
---------
+
 ## Requirements （项目环境）  
 #### 1.安装配置shadowsocks翻墙
 请参考https://github.com/shadowsocks/shadowsocks-windows （在本地1080端口运行ss服务)  
@@ -57,7 +58,7 @@ Including the basic settings about the databse storage，the duplicate filter，
     
     $ service mysql start
 
-----------
+
 ## Configuration （文件设置）
 #### 只需在项目中的 `settings.py` 进行设置
 #### 1.MYSQL SETTINGS
@@ -117,7 +118,7 @@ Including the basic settings about the databse storage，the duplicate filter，
      }
 
 
-------------
+
 ## Usage （运行测试）
 1.修改项目信息Target :  
      
@@ -130,8 +131,8 @@ Including the basic settings about the databse storage，the duplicate filter，
 
     $ scrapy crawl IPtester  
 
-3.截图：  
-  
+3.Screenshot：  
+
 ![image](https://github.com/adrianyoung/SCRAPY_BASIC/blob/master/example.png?raw=true)
     
 
