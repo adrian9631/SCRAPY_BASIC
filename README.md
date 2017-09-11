@@ -120,18 +120,18 @@ Including the basic settings about the databse storage，the duplicate filter，
 
 
 ## Usage （运行测试）
-1.修改项目信息Target :  
+#### 1.修改项目信息Target :  
      
     $ vi scrapy.cfg (vi settings.py)  
 在vi编辑器工作栏下  
     
     :%s/Basic/Target/g  
 
-2.运行，测试IP ：  
+#### 2.运行，测试IP ：  
 
     $ scrapy crawl IPtester  
 
-3.Screenshot：  
+#### 3.Screenshot：  
 
 ![image](https://github.com/adrianyoung/SCRAPY_BASIC/blob/master/example.png?raw=true)
     
